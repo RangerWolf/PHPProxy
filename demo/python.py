@@ -14,7 +14,7 @@ def php_proxy_request(url, form_data = {}, method = "get", cookies_str = None, u
 
     headers = {}
     if user_agent is not None :
-        headers = {'user-agent': user_agent}
+        headers = {'User-Agent': user_agent}
 
     data = form_data
     data['url'] = url
@@ -29,5 +29,14 @@ def basic_test(url = "http://www.flyml.net/") :
     print php_proxy_request(url)
 
 
+def ua_test() :
+    user_agent = "php proxy ua test"
+
+    url = "https://www.v2ex.com/ua"
+
+    resp = php_proxy_request(url, user_agent = user_agent)
+
+    print user_agent in resp
+
 if __name__ == '__main__':
-    basic_test()
+    ua_test()
